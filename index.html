@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Flower Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!--Header / Navbar-->
+<header>
+  <nav class="navbar section-content">
+    <a href="#" class="nav-logo">
+      <h2 class="logo-text">Welcome to Beauty Flower Store
+        <i class="fas fa-spa" style="color: white;"></i>
+      </h2>
+    </a>
+
+    <!-- NAV MENU -->
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#menu" class="nav-link">Menu</a></li>
+      <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero section -->
+ <section class="hero-section" id="home">
+  <div class="hero-content">
+    <div class="hero-text">
+      <p><em>Flower store that recommends the best flowers for customer</em></p>
+      <p><strong>Beauty Flower Store</strong> is a flower store that sells various fresh flowers and artificial flowers. 
+        Our flower store also accepts flower designs for <strong> birthday,weddings, condolences, and graduations</strong>.
+      </p>
+      <div class="hero-buttons">
+        <a href="#menu" class="button">Order Now</a>
+        <a href="#contact" class="button">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/bunga4.png" alt="Flower bouquet">
+    </div>
+  </div>
+</section>
+
+
+  <!-- About section -->
+  <section class="about-section" id="about">
+    <div class="section-content">
+      <div class="about-image-wrapper">
+        <img src="images/logo.jpg" alt="About" class="about-image">
+      </div>
+      <div class="about-details">
+        <h2 class="section-title">About Us</h2>
+        <p class="text">
+          Flowers are objects that have a very beautiful shape. Flowers are a must when there is an important event. 
+          Such as a wedding or a mourning event. Therefore, our shop prioritizes the quality of flowers for sale. 
+          Not only the quality, our shop also provides good service to customers.
+        </p>
+        <div class="social-icons">
+  <a href="https://www.instagram.com/beautyflowerstore_" target="_blank">
+    <img src="images/igicon.jpg" alt="Instagram" />
+  </a>
+  <a href="https://wa.me/6285691714248" target="_blank">
+    <img src="images/waicon.jpg" alt="WhatsApp" />
+  </a>
+  <a href="https://www.tiktok.com/@beauty.flowerstor7" target="_blank">
+    <img src="images/tiktokicon.jpg" alt="TikTok" />
+  </a>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+<!-- Menu Section -->
+<section id="menu" class="menu-section">
+  <div class="section-content">
+    <h2 class="section-title">All Menu</h2>
+
+    <!-- Navigasi Geser -->
+    <div class="nav-buttons" style="text-align: center; margin-bottom: 10px;">
+      <button onclick="scrollMenu(-300)" style="padding: 10px; font-size: 18px;">&#8592;</button>
+      <button onclick="scrollMenu(300)" style="padding: 10px; font-size: 18px;">&#8594;</button>
+    </div>
+
+    <!-- Slider Container -->
+    <div class="menu-slider" id="menuSlider" style="display: flex; overflow-x: auto; gap: 20px; scroll-behavior: smooth; padding-bottom: 10px;">
+      
+      <div class="menu-item">
+        <img src="images/buketbunga.png" alt="Bouquet Bunga" style="width: 180px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Pink and White Combination Flower Bouquet</h3>
+        <p class="text">This flower bouquet with a combination of soft pink and white has a cool and elegant impression. This flower bouquet has a medium size. The flowers used in this bouquet are real flowers.</p>
+  <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 150.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+ <a href="checkout.html?product=pink-and-white-combination-flower-bouquet&price=150000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Pink and White Combination Flower Bouquet', 150000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+      </div>
+
+      <div class="menu-item">
+        <img src="images/bungabuck2.png" alt="Bouquet Bunga 2" style="width: 162px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Soft Purple Flower Bouquet</h3>
+        <p class="text">This flower bouquet has a soft purple color combined with a touch of white, giving a warm and calm impression. It uses real flowers, and the leaves are artificial.</p>
+         <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 125.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+  <a href="checkout.html?product=soft-purple-flower-bouquet&price=125000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Soft Purple Flower Bouquet', 125000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+      </div>
+
+     <div class="menu-item">
+  <img src="images/buketkupu.png" alt="Bouquet Kupu" style="width: 192px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  
+  <h3 class="name">LED Butterfly Bouquet</h3>
+  <p class="text">LED butterfly bouquet is filled with light up butterfly decorations. Suitable as decoration or stored in a glass cabinet because of its cute shape. 
+    With the beautiful butterfly LED shape, this bouquet lights up nicely.</p>
+
+  <!-- Tombol Harga -->
+  <button style="margin-top: 10px; padding: 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: default;">
+    Price: Rp 85.000
+  </button>
+
+  <!-- Tombol Order Sekarang -->
+  <a href="checkout.html?product=LED-Butterfly-Bouquet&price=85000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('LED Butterfly Bouquet', 85000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+</div>
+
+
+      <div class="menu-item">
+        <img src="images/bungawisuda.png" alt="Bouquet Wisuda" style="width: 185px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Emerald Pink Rose Graduation Bouquet</h3>
+        <p class="text">A bouquet combining soft purple and white, gives a warm and calm impression. Real flowers with artificial leaves.</p>
+        <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 150.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+   <a href="checkout.html?product=Emerald-pink-rose-graduation-bouquet&price=150000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Emerald Pink Rose Graduation Bouquet', 150000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+      </div>
+
+      <div class="menu-item">
+        <img src="images/buketitem.png" alt="Bouquet Item" style="width: 192px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Dark Blue Rose Bouquet with Teddy Bear</h3>
+        <p class="text">This bouquet has a simple shape with dark blue roses and a touch of white, making this bouquet suitable for a graduation gift. 
+          Plus a cute teddy bear.</p>
+          <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 150.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+  <a href="checkout.html?product=Dark-Blue-rose-bouquet-with-teddy-bear&price=150000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+   <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Dark Blue Rose Bouquet with Teddy Bear', 150000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+      </div>
+
+      <div class="menu-item">
+        <img src="images/buketlagi.png" alt="Bouquet Lagi" style="width: 192px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Red Rose Bouquet with Teddy bear</h3>
+        <p class="text">This flower bouquet is a bouquet that has a combination of black and red colors. 
+          With the presence of fresh red roses and added with a cute teddy bear.</p>
+         <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 135.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+ <a href="checkout.html?product=Red-rose-bouquet-with-teddy-bear&price=150000" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Red Rose Bouquet with Teddy bear', 135000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+      </div>
+      <div class="menu-item">
+        <img src="images/bungapink.png" alt="Bouquet Baru" style="width: 192px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Pink Rose Bouquet</h3>
+        <p>This bouquet has a soft pink color. With the presence of artificial pink roses. 
+          This flower bouquet is suitable for those of you who like pink.</p>
+         <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 150.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+  <a href="checkout.html?product=Pink-Rose-Bouquet" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Pink Rose Bouquet', 150000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+  
+      </div>
+      <div class="menu-item">
+        <img src="images/buketbalon.png" alt="Bouquet Baru" style="width: 192px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+        <h3 class="name">Pink Rose Bouquet</h3>
+        <p>This bouquet has a soft pink color. With the presence of artificial pink roses. 
+          This flower bouquet is suitable for those of you who like pink.</p>
+         <button style="margin-top: 10px; padding: 7px 10px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Price: Rp 150.000
+    </button>
+  </a>
+  <!-- Tombol Beli Sekarang ke halaman checkout -->
+  <a href="checkout.html?product=Pink-Rose-Bouquet" style="text-decoration: none;">
+    <button style="margin-top: 10px; padding: 6px 9px; background-color: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Order Now
+    </button>
+  </a>
+  <!-- Tombol Add to Cart -->
+  <button onclick="addToCart('Pink Rose Bouquet', 150000)" style="margin-top: 10px; padding: 10px; background-color: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Add to Cart
+  </button>
+
+    </div>
+    
+  </div>
+</section>
+
+
+  <!-- Testimoni section -->
+  <section id="testimoni">
+    <h2 class="section-title">Testimoni</h2>
+  </section>
+  <section id="testimoni" style="padding: 40px; text-align: center; background-color: #fef1f6;">
+  <h2 style="margin-bottom: 30px;">What they say💬</h2>
+
+  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+
+    <!-- Testimoni 1 -->
+    <div style="width: 250px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 10px #ddd;">
+      <img src="images/Justin.jpg" alt="Profil Sesi" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+      <p style="font-style: italic;">“Bouquetnya cantik dan pengirimannya cepat. Cocok untuk surprise ulang tahun!”</p>
+      <p style="margin-top: 10px; color: #f39c12;">⭐⭐⭐⭐⭐</p>
+      <strong>Justin Bieber</strong>
+    </div>
+
+    <!-- Testimoni 2 -->
+    <div style="width: 250px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 10px #ddd;">
+      <img src="images/Raisa.jpg" alt="Profil Nisa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+      <p style="font-style: italic;">“Wangi bunganya tahan lama dan penataannya rapi. Recommended!”</p>
+      <p style="margin-top: 10px; color: #f39c12;">⭐⭐⭐⭐⭐</p>
+      <strong>Raisa</strong>
+    </div>
+ <!-- Testimoni 3 -->
+    <div style="width: 250px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 10px #ddd;">
+      <img src="images/rony1.png" alt="Profil Nisa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+      <p style="font-style: italic;">“Wangi bunganya lucu banget warna nyaa aku sukaa.!”</p>
+      <p style="margin-top: 10px; color: #f39c12;">⭐⭐⭐⭐⭐</p>
+      <strong>Rony</strong>
+    </div>
+<!-- Testimoni 4 -->
+    <div style="width: 250px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 10px #ddd;">
+      <img src="images/jerome1.png" alt="Profil Nisa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+      <p style="font-style: italic;">“Cepat banget untuk pengantaran bunga ini”</p>
+      <p style="margin-top: 10px; color: #f39c12;">⭐⭐⭐⭐</p>
+      <strong>Jerome</strong>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Contact section -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+  </section>
+</main>
+
+<!-- Setelah CONTACT -->
+<section id="chatbot" style="padding: 30px 20px; background-color: #fff0f5;">
+  <h2 style="text-align: center; margin-bottom: 15px;">Have a question? Chat here 💬</h2>
+  <div id="chatbot-container">
+    <div id="chat-log"></div>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+      <input type="text" id="chat-input" placeholder="Tanyakan sesuatu..." onkeydown="handleKey(event)" style="flex: 1; padding: 10px;">
+      <button onclick="sendMessage()" style="background-color: #ff69b4; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Kirim</button>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function scrollMenu(offset) {
+    const slider = document.getElementById("menuSlider");
+    slider.scrollBy({
+      left: offset,
+      behavior: "smooth"
+    });
+  }
+</script>
+
+  <!-- Tombol Keranjang Kanan Bawah -->
+<button onclick="toggleCart()" style="position: fixed; bottom: 20px; right: 20px; background-color: #ff69b4; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 20px; cursor: pointer; z-index: 1000;">
+  🛒
+</button>
+
+<!-- Popup Cart Box -->
+<div id="cart-box" style="display:none; position:fixed; bottom: 80px; right: 20px; background:white; border:1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index:1000; max-width: 300px;">
+  <h4>🛒 Your Cart</h4>
+  <ul id="cart-items" style="list-style: none; padding-left: 0; margin: 0;"></ul>
+  <p><strong>Total: Rp <span id="cart-total">0</span></strong></p>
+ <button onclick="toggleCart()" style="background-color: #ff69b4; color: white; border: none; padding: 5px 10px; border-radius: 5px;">Close</button>
+<button onclick="goToCheckout()" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; margin-left: 10px;">Checkout</button>
+
+
+<!-- SCRIPT -->
+<script>
+  let cart = [];
+
+  function addToCart(product, price) {
+    const existing = cart.find(item => item.product === product);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ product, price, qty: 1 });
+    }
+    updateCartDisplay();
+  }
+
+  function updateCartDisplay() {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      total += item.price * item.qty;
+
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${item.product} x${item.qty} - Rp ${(item.price * item.qty).toLocaleString("id-ID")}
+        <button onclick="removeFromCart(${index})" style="margin-left: 10px; color: red; border: none; background: none; cursor: pointer;">❌</button>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = total.toLocaleString("id-ID");
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartDisplay();
+  }
+
+  function toggleCart() {
+    const cartBox = document.getElementById("cart-box");
+    cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+  }
+    function goToCheckout() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'checkout.html';
+  }
+  
+
+</script>
+<script>
+  function sendMessage() {
+    const input = document.getElementById("chat-input");
+    const log = document.getElementById("chat-log");
+    const message = input.value.trim();
+
+    if (message === "") return;
+
+    // Tambah pesan user ke log
+    const userMessage = document.createElement("div");
+    userMessage.innerHTML = `<p><strong>You:</strong> ${message}</p>`;
+    userMessage.style.textAlign = "right";
+    log.appendChild(userMessage);
+
+    // Bersihkan input
+    input.value = "";
+
+    // Jawaban default
+    let reply = "Maaf, saya belum mengerti pertanyaan Anda. Silakan coba dengan kata lain.";
+
+    // Jawaban sesuai pertanyaan
+    const lowerMessage = message.toLowerCase();
+    if (lowerMessage.includes("halo") || lowerMessage.includes("hai")) {
+      reply = "Halo! Selamat datang di Beauty Flower Store 🌸 Ada yang bisa kami bantu?";
+    } else if (lowerMessage.includes("produk") || lowerMessage.includes("menu") || lowerMessage.includes("bunga")) {
+      reply = "Kami menyediakan berbagai bouquet: Pink Rose, Red Rose, LED Butterfly, dan lainnya. Lihat di bagian Menu ya 💐";
+    } else if (lowerMessage.includes("alamat") || lowerMessage.includes("lokasi")) {
+      reply = "Alamat kami: Jl. Mawar Indah No. 7, Bandung. Klik 'Contact' untuk info lebih lanjut 📍";
+    } else if (lowerMessage.includes("buka") || lowerMessage.includes("jam")) {
+      reply = "Kami buka setiap hari pukul 08.00 - 21.00 WIB ⏰";
+    } else if (lowerMessage.includes("wa") || lowerMessage.includes("whatsapp")) {
+      reply = "Hubungi kami via WhatsApp di 0856-9171-4248 📱";
+    } else if (lowerMessage.includes("harga") || lowerMessage.includes("ongkir")) {
+      reply = "Harga bervariasi mulai dari Rp 85.000. Ongkir tergantung lokasi pengiriman 🚚";
+    }
+
+    // Tambah pesan bot ke log
+    const botMessage = document.createElement("div");
+    botMessage.innerHTML = `<p><strong>BeautyBot:</strong> ${reply}</p>`;
+    botMessage.style.textAlign = "left";
+    log.appendChild(botMessage);
+
+    // Scroll otomatis ke bawah
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function handleKey(e) {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  }
+</script>
+<script>
+  function sendMessage() {
+    const input = document.getElementById("chat-input");
+    const message = input.value.trim();
+    const chatLog = document.getElementById("chat-log");
+
+    if (message === "") return;
+
+    // Tampilkan pesan dari user
+    const userMsg = document.createElement("div");
+    userMsg.textContent = "You: " + message;
+    chatLog.appendChild(userMsg);
+
+    // Balasan otomatis berdasarkan pertanyaan
+    let reply = "Maaf, saya belum mengerti pertanyaan Anda. Coba gunakan kata kunci seperti 'buket', 'harga', atau 'kontak'.";
+
+    const msg = message.toLowerCase();
+
+    if (msg.includes("halo") || msg.includes("hai")) {
+      reply = "Halo! Ada yang bisa saya bantu tentang produk bunga kami?";
+    } else if (msg.includes("produk") || msg.includes("buket")) {
+      reply = "Kami punya banyak jenis buket seperti Pink Rose, Soft Purple, LED Butterfly, dan lainnya. Silakan lihat bagian Menu!";
+    } else if (msg.includes("harga")) {
+      reply = "Harga buket kami bervariasi mulai dari Rp 85.000 hingga Rp 150.000.";
+    } else if (msg.includes("wisuda") || msg.includes("graduation")) {
+      reply = "Tersedia! Kami punya Emerald Pink Rose Graduation Bouquet yang cocok untuk hadiah wisuda.";
+    } else if (msg.includes("order") || msg.includes("pesan")) {
+      reply = "Anda bisa langsung klik tombol 'Order Now' di produk yang Anda pilih untuk melakukan pemesanan.";
+    } else if (msg.includes("kontak") || msg.includes("wa")) {
+      reply = "Hubungi kami melalui WhatsApp di: https://wa.me/6285691714248";
+    }
+
+    // Tampilkan balasan
+    const botMsg = document.createElement("div");
+    botMsg.textContent = "Bot: " + reply;
+    chatLog.appendChild(botMsg);
+
+    // Scroll ke bawah otomatis
+    chatLog.scrollTop = chatLog.scrollHeight;
+
+    input.value = ""; // Reset input
+  }
+
+  function handleKey(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  }
+</script>
+
+
+
+
+
+</body>
+</html> 

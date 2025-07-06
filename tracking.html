@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tracking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .status-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f9f9f9;
+      max-width: 600px;
+    }
+    .status-item {
+      margin-bottom: 10px;
+    }
+    .history {
+      margin-top: 15px;
+    }
+    .history-item {
+      border-left: 4px solid #2196F3;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #2196F3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Detail Pengiriman</h2>
+  <div id="trackingInfo" class="status-box"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const txID = params.get("transaction");
+
+    // Simulasi database status pengiriman
+    const trackingData = {
+      status: "Dalam perjalanan ke lokasi tujuan",
+      lastUpdate: "28 Juni 2025, 22:30 WIB",
+      estimate: "28 Juni 2025, sekitar pukul 23:00 WIB",
+      history: [
+        { time: "28 Juni 2025, 20:45 WIB", desc: "Paket keluar dari gudang pusat" },
+        { time: "28 Juni 2025, 21:30 WIB", desc: "Paket tiba di hub Bekasi" },
+        { time: "28 Juni 2025, 22:00 WIB", desc: "Kurir mengambil paket untuk pengantaran" }
+      ]
+    };
+
+    const container = document.getElementById("trackingInfo");
+
+    container.innerHTML = `
+      <div class="status-item"><strong>ID Transaksi:</strong> ${txID}</div>
+      <div class="status-item"><strong>Status Saat Ini:</strong> <span class="highlight">${trackingData.status}</span></div>
+      <div class="status-item"><strong>Update Terakhir:</strong> ${trackingData.lastUpdate}</div>
+      <div class="status-item"><strong>Estimasi Tiba:</strong> ${trackingData.estimate}</div>
+
+      <div class="history">
+        <h4>Riwayat Pengiriman:</h4>
+        ${trackingData.history.map(item => `
+          <div class="history-item">
+            <strong>${item.time}</strong><br />
+            ${item.desc}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  </script>
+</body>
+</html>

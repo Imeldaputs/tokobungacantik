@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Scan Resi - Beauty Flower Store</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #fef1f6;
+      text-align: center;
+    }
+    #reader {
+      width: 300px;
+      margin: 20px auto;
+    }
+    h2 {
+      color: #d63384;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Scan Barcode Transaksi</h2>
+<div id="reader"></div>
+<p id="result"></p>
+
+<script>
+  function onScanSuccess(decodedText, decodedResult) {
+    document.getElementById("result").innerText = "Kode terdeteksi: " + decodedText;
+
+    // Arahkan otomatis ke tracking
+    window.location.href = "t.php?id=" + encodeURIComponent(decodedText);
+  }
+
+  new Html5Qrcode("reader").start(
+    { facingMode: "environment" }, // Pakai kamera belakang jika ada
+    {
+      fps: 10,
+      qrbox: 250
+    },
+    onScanSuccess
+  ).catch(err => {
+    document.getElementById("result").innerText = "Gagal akses kamera: " + err;
+  });
+</script>
+
+</body>
+</html>

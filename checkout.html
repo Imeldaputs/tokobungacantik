@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #fff0f5; }
+    .form-section { margin-bottom: 20px; }
+    button { padding: 10px 20px; background: #ff69b4; color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<h2>Checkout</h2>
+
+<form action="confirm.html" method="GET">
+  <!-- Hidden input untuk kirim data -->
+  <input type="hidden" name="produk" id="produkInput" value="">
+  <input type="hidden" name="total" id="totalInput" value="">
+
+  <!-- Daftar isi keranjang -->
+  <div id="cart-summary"></div>
+
+  <!-- Qty untuk Order Now -->
+<div id="qty-box" class="form-section" style="display: none;">
+  <label for="qtyInput"><strong>Quantity:</strong></label>
+  <input type="number" id="qtyInput" name="qtyInput" min="1" value="1" style="width: 60px;" />
+</div>
+
+
+  <!-- Total semua harga -->
+  <div class="form-section">
+    <strong>Total price:</strong> Rp <span id="total-harga">0</span>
+  </div>
+
+  <button type="submit">Purchase confirmation</button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productFromUrl = urlParams.get("product");
+    const priceFromUrl = parseInt(urlParams.get("price"));
+    const qtyFromUrl = parseInt(urlParams.get("qty")) || 1;
+
+    const cartSummary = document.getElementById("cart-summary");
+    const totalSpan = document.getElementById("total-harga");
+    const inputProduk = document.getElementById("produkInput");
+    const inputTotal = document.getElementById("totalInput");
+    const qtyBox = document.getElementById("qty-box");
+    const qtyInput = document.getElementById("qtyInput");
+
+    // ORDER NOW - tampil 1 produk dari URL
+    if (productFromUrl && priceFromUrl) {
+      const productName = productFromUrl.replace(/-/g, ' ');
+
+      // Tampilkan qty box
+      qtyBox.style.display = "block";
+      qtyInput.value = qtyFromUrl;
+
+      // Fungsi update total berdasarkan qty input
+      function updateOrderNowTotal() {
+        const currentQty = parseInt(qtyInput.value) || 1;
+        const total = priceFromUrl * currentQty;
+
+        cartSummary.innerHTML = `
+          <p><strong>${productName}</strong> x${currentQty} - Rp ${total.toLocaleString("id-ID")}</p>
+        `;
+        totalSpan.textContent = total.toLocaleString("id-ID");
+        inputProduk.value = `${productName} x${currentQty}`;
+        inputTotal.value = total;
+      }
+
+      // Inisialisasi awal dan saat qty berubah
+      updateOrderNowTotal();
+      qtyInput.addEventListener("input", updateOrderNowTotal);
+      return;
+    }
+
+    // ELSE: ambil dari keranjang...
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+    let daftarProduk = [];
+
+    if (cart.length === 0) {
+      cartSummary.innerHTML = "<p>Keranjang kosong.</p>";
+      return;
+    }
+
+    cart.forEach(item => {
+      const subtotal = item.price * item.qty;
+      total += subtotal;
+      daftarProduk.push(`${item.product} x${item.qty}`);
+
+      const itemDiv = document.createElement("div");
+      itemDiv.innerHTML = `<p><strong>${item.product}</strong> x${item.qty} - Rp ${subtotal.toLocaleString("id-ID")}</p>`;
+      cartSummary.appendChild(itemDiv);
+    });
+
+    totalSpan.textContent = total.toLocaleString("id-ID");
+    inputProduk.value = daftarProduk.join(", ");
+    inputTotal.value = total;
+  });
+</script>
+
+
+
+
+</body>
+</html>

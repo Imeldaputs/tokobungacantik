@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8">
+  <title>Purchase Confirmation</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #fef1f6; }
+    label { font-weight: bold; display: block; margin-top: 10px; }
+    input, select, textarea { padding: 5px; width: 100%; margin-top: 5px; }
+    #receipt { display: none; background: #fff; padding: 20px; margin-top: 30px; border: 1px solid #ccc; }
+    @media print {
+      body *:not(#receipt):not(#receipt *) {
+        display: none !important;
+      }
+      #receipt {
+        display: block !important;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Purchase Confirmation</h2>
+  <p><strong>Product:</strong> <span id="productName"></span></p>
+  <p><strong>Unit price:</strong> Rp <span id="unitPrice"></span></p>
+  <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+  <p><strong>Subtotal (Product Only):</strong> Rp <span id="productSubtotal"></span></p>
+
+  <form id="orderForm">
+    <label>Full Name:</label>
+    <input type="text" name="fullname" required>
+
+    <label>Phone Number:</label>
+    <input type="text" name="phone" required>
+
+    <label>Address:</label>
+    <textarea name="address" rows="3" required></textarea>
+    <small style="color:red;"><i>* Pengiriman hanya untuk wilayah JABODETABEK. Luar wilayah hanya menerima bunga artificial.</i></small>
+
+    <label>Delivery Type:</label>
+    <select id="deliveryType" onchange="updateTotal()">
+      <option value="0">-- Pilih pengiriman --</option>
+      <option value="20000">Flower delivery instan - Rp 20.000</option>
+      <option value="10000">Flower delivery express - Rp 10.000</option>
+    </select>
+
+    <p><strong>Delivery Cost:</strong> Rp <span id="deliveryCost">0</span></p>
+
+    <label>Payment Method:</label>
+    <select name="payment" id="paymentMethod" onchange="toggleProofUpload()">
+      <option value="cod">COD</option>
+      <option value="transfer">Bank Transfer Mandiri(No rek: 0321114728)</option>
+      <option value="transfer">Bank Transfer BCA(No rek: 0322151234)</option>
+      <option value="transfer">DANA(085819054133)</option>
+    </select>
+
+    <!-- Upload bukti pembayaran akan disembunyikan jika COD -->
+    <div id="proofContainer">
+      <label>Upload proof your payment:</label>
+      <input type="file" name="proof">
+    </div>
+
+    <p><strong>Total Subtotal:</strong> Rp <span id="finalTotal"></span></p>
+
+    <button type="button" onclick="generateReceipt()">Print Receipt</button>
+  </form>
+
+  <!-- STRUK / KWITANSI -->
+  <div id="receipt">
+    <h2>Beauty Flower Store</h2>
+    <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+    <p><strong>Transaction ID:</strong> <span id="receiptID"></span></p>
+    <hr>
+    <p><strong>Name:</strong> <span id="receiptName"></span></p>
+    <p><strong>Product:</strong> <span id="productName"></span></p>
+    <p><strong>Delivery:</strong> <span id="receiptDeliveryType"></span></p>
+    <p><strong>Total Paid:</strong> Rp <span id="receiptTotal"></span></p>
+    <div style="margin-top:20px;">
+      <svg id="barcode"></svg>
+    </div>
+  </div>
+
+  <!-- JS SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+<script>
+  // Ambil data dari URL
+  const params = new URLSearchParams(window.location.search);
+  const produk = params.get("produk") || "Unknown Product";
+  const total = parseInt(params.get("total")) || 0;
+  const qty = parseInt(params.get("qtyInput")) || 1;
+
+  // Hitung unit price
+  const unitPrice = Math.floor(total / qty);
+
+  // Tampilkan data awal ke halaman
+  document.getElementById("productName").innerText = decodeURIComponent(produk);
+  document.getElementById("unitPrice").innerText = unitPrice.toLocaleString("id-ID");
+  document.getElementById("quantity").innerText = qty;
+  document.getElementById("productSubtotal").innerText = total.toLocaleString("id-ID");
+  document.getElementById("finalTotal").innerText = total.toLocaleString("id-ID");
+
+  // Simpan subtotal produk untuk perhitungan total akhir
+  let productSubtotal = total;
+
+  function isWilayahJabodetabek(address) {
+    const kotaJabodetabek = ["jakarta", "bogor", "depok", "tangerang", "bekasi"];
+    const alamat = address.toLowerCase();
+    return kotaJabodetabek.some(kota => alamat.includes(kota));
+  }
+
+  function updateTotal() {
+    const deliverySelect = document.getElementById("deliveryType");
+    const deliveryCost = parseInt(deliverySelect.value) || 0;
+    const final = productSubtotal + deliveryCost;
+
+    document.getElementById("deliveryCost").innerText = deliveryCost.toLocaleString("id-ID");
+    document.getElementById("finalTotal").innerText = final.toLocaleString("id-ID");
+  }
+
+  function toggleProofUpload() {
+    const method = document.getElementById("paymentMethod").value;
+    const proofContainer = document.getElementById("proofContainer");
+
+    proofContainer.style.display = (method === "cod") ? "none" : "block";
+  }
+
+  function generateReceipt() {
+  const name = document.querySelector('input[name="fullname"]').value;
+  const address = document.querySelector('textarea[name="address"]').value;
+  const deliverySelect = document.getElementById("deliveryType");
+  const deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text;
+  const total = document.getElementById("finalTotal").innerText;
+
+  if (name === "" || deliverySelect.value === "0") {
+    alert("Lengkapi nama dan pilih jenis pengiriman.");
+    return;
+  }
+
+  if (!isWilayahJabodetabek(address)) {
+    alert("Alamat di luar JABODETABEK hanya bisa menerima bunga artificial.");
+    return;
+  }
+
+  const date = new Date();
+  const dateStr = date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+  const transactionID = "TX" + date.getTime();
+
+  document.getElementById("receiptDate").innerText = dateStr;
+  document.getElementById("receiptID").innerText = transactionID;
+  document.getElementById("receiptName").innerText = name;
+  document.getElementById("receiptDeliveryType").innerText = deliveryText;
+  document.getElementById("receiptTotal").innerText = total;
+
+  JsBarcode("#barcode", transactionID, {
+    format: "CODE128",
+    width: 2,
+    height: 40,
+    displayValue: true
+  });
+
+  document.getElementById("receipt").style.display = "block";
+
+  // Cetak lalu redirect ke halaman tracking
+  setTimeout(() => {
+    window.print();
+    
+    // Setelah proses print selesai, redirect ke tracking.html
+    setTimeout(() => {
+      window.location.href = `tracking.html?transaction=${transactionID}`;
+    }, 500); // jeda sebentar setelah print
+  }, 500);
+}
+
+
+  // Jalankan otomatis saat halaman load
+  window.onload = function () {
+    toggleProofUpload();
+    updateTotal(); // <- tambahkan ini biar ongkir langsung dihitung saat select berubah
+  };
+</script>
+
+
+</body>
+</html>
